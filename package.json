@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "build": "postcss tailwind.css -o public/build/tailwind.css"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.1",
     "express-session": "^1.17.1",
+    "materialize-css": "^1.0.0-rc.2",
     "mysql2": "^2.2.5",
     "sequelize": "^6.5.0"
   },
