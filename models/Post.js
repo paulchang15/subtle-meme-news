@@ -17,12 +17,12 @@ class Post extends Model {
           "post_url",
           "title",
           "created_at",
-          [
-            sequelize.literal(
-              "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
-            ),
-            "vote_count",
-          ],
+          // [
+          //   sequelize.literal(
+          //     "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+          //   ),
+          //   "vote_count",
+          // ],
         ],
         include: [
           {
@@ -78,34 +78,52 @@ Post.init(
     freezeTableName: true,
     underscored: true,
     modelName: "post",
-    hooks: {
-      beforeDestroy(user, options) {
-        Comment.findAll({
-          where: {
-            post_id: req.params.id,
-          },
-        }).then((data) => {
-          data.forEach((comment) => {
-            console.log(data.commentValues);
-          });
-          Comment.destroy({
-            id: parseInt(data.id),
-          });
+    // hooks: {
+    //   beforeDestroy(post, options) {
+    //     console.log(post.id);
+    //     return new Promise(function (resolve, reject) {
+    //       sequelize
+    //         .query("DELETE FROM comment WHERE post_id = :post_id", {
+    //           replacements: { post_id: post.id },
+    //         })
+    //         .then((results) => {
+    //           sequelize.query("DELETE FROM vote WHERE post_id = :post_id", {
+    //             replacements: { post_id: post.id },
+    //           });
+    //         })
+    //         .then((results) => {
+    //           resolve();
+    //         })
+    //         .catch((err) => {
+    //           reject(err);
+    //         });
+    //     });
+    //     // Comment.findAll({
+    //     //   where: {
+    //     //     post_id: req.params.id,
+    //     //   },
+    //     // }).then((data) => {
+    //     //   data.forEach((comment) => {
+    //     //     console.log(data.commentValues);
+    //     //   });
+    //     //   Comment.destroy({
+    //     //     id: parseInt(data.id),
+    //     //   });
 
-          Vote.findAll({
-            where: {
-              post_id: req.params.id,
-            },
-          }).then((data) => {
-            console.log(data);
-            const id = data.split("");
-            Vote.destroy({
-              id: parseInt(data),
-            });
-          });
-        });
-      },
-    },
+    //     //   Vote.findAll({
+    //     //     where: {
+    //     //       post_id: req.params.id,
+    //     //     },
+    //     //   }).then((data) => {
+    //     //     console.log(data);
+    //     //     const id = data.split("");
+    //     //     Vote.destroy({
+    //     //       id: parseInt(data),
+    //     //     });
+    //     //   });
+    //     // });
+    //   },
+    // },
   }
 );
 
