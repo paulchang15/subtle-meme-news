@@ -98,31 +98,31 @@ Post.init(
     //           reject(err);
     //         });
     //     });
-    //     // Comment.findAll({
-    //     //   where: {
-    //     //     post_id: req.params.id,
-    //     //   },
-    //     // }).then((data) => {
-    //     //   data.forEach((comment) => {
-    //     //     console.log(data.commentValues);
-    //     //   });
-    //     //   Comment.destroy({
-    //     //     id: parseInt(data.id),
-    //     //   });
-
-    //     //   Vote.findAll({
-    //     //     where: {
-    //     //       post_id: req.params.id,
-    //     //     },
-    //     //   }).then((data) => {
-    //     //     console.log(data);
-    //     //     const id = data.split("");
-    //     //     Vote.destroy({
-    //     //       id: parseInt(data),
-    //     //     });
-    //     //   });
-    //     // });
+    // Comment.findAll({
+    //   where: {
+    //     post_id: req.params.id,
     //   },
+    // }).then((data) => {
+    //   data.forEach((comment) => {
+    //     console.log(data.commentValues);
+    //   });
+    //   Comment.destroy({
+    //     id: parseInt(data.id),
+    //   });
+
+    //   Vote.findAll({
+    //     where: {
+    //       post_id: req.params.id,
+    //     },
+    //   }).then((data) => {
+    //     console.log(data);
+    //     const id = data.split("");
+    //     Vote.destroy({
+    //       id: parseInt(data),
+    //     });
+    //   });
+    // });
+    // },
     // },
   }
 );
